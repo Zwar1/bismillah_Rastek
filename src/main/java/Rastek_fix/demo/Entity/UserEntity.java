@@ -8,7 +8,9 @@ import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 
 @Getter
@@ -17,7 +19,6 @@ import java.util.Date;
 @NoArgsConstructor
 @Entity
 @Table(name = "users")
-
 public class UserEntity {
 
     @Id
@@ -57,4 +58,15 @@ public class UserEntity {
     @UpdateTimestamp
     @Column(name = "updated_at")
     private Date updatedAt;
+
+    @ManyToMany
+    @JoinTable(
+            name = "user_role",
+            uniqueConstraints = {
+                @UniqueConstraint(name = "user_role_unique", columnNames = { "id_user", "id_role" })
+            },
+            joinColumns = @JoinColumn(name = "id_user", referencedColumnName = "id_user"),
+            inverseJoinColumns = @JoinColumn(name = "id_role", referencedColumnName = "id_role")
+    )
+    private List<RoleEntity> roles = new ArrayList<>();
 }

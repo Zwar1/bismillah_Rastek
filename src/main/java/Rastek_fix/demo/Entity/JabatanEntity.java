@@ -15,7 +15,6 @@ import java.util.Set;
 @NoArgsConstructor
 @Entity
 @Table(name = "kode_jabatan")
-
 public class JabatanEntity {
 
     @Id

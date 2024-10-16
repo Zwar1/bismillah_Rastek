@@ -64,4 +64,15 @@ public class UserService implements UserDetailsService {
         // Return a UserDetails object with username, password and no authorities
         return new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword(), new ArrayList<>());
     }
+
+    // public UserRes Delete_User(CreateUserReq request) {
+    //     // Memeriksa apakah user dengan username yang diberikan ada
+    //     if (!userRepository.existsByUsername(request.getUsername())) {
+    //         throw new ResponseStatusException(HttpStatus.NOT_FOUND, "User not found");
+    //     }
+
+    //     // Menghapus user dari repository
+    //     userRepository.findByUsername(request.getUsername());
+    // }
+
 }
